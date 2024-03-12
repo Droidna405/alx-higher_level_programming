@@ -2,4 +2,3 @@
 PY_FILE = $(mktemp)
 echo "$PYCODE" > "$PY_FILE"
 python3 "$PY_FILE"
-rm "$PY_FILE"

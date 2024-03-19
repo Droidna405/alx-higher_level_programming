@@ -22,41 +22,19 @@
  * Return:
  *   Nothing (void)
  */
-
 void print_python_list_info(PyObject *p)
 {
-
-if (!PyList_Check(p))
-{
-printf("[-] TypeError: cannot use anything other than\
- list with this function\n");
-return;
-}
-
+PyListObject *list = (PyListObject *)p;
 Py_ssize_t size = PyList_Size(p);
-  
-printf("[*] Size of the Python List = %zd\n", size);
+Py_ssize_t i;
+PyObject *item;
 
-PyObject *first_element = PyList_GetItem(p, 0);
+printf("[*] Size of the Python List = %ld\n", size);
+printf("[*] Allocated = %ld\n", list->allocated);
 
-
-if (first_element == NULL)
+for (i = 0; i < size; i++)
 {
-PyErr_Print();
-return;
+item = PyList_GetItem(p, i);
+printf("Element %ld: %s\n", i, Py_TYPE(item)->tp_name);
 }
-
-PyObject *first_element_type = PyList_GetItem(p, 0);
-if (first_element_type == NULL)
-{
-PyErr_Print();
-return;
-}
-
-printf("[*] First element type: ");
-
-printf("%s\n", PyType_Type.tp_name(first_element_type));
-
-Py_DECREF(first_element);
-Py_DECREF(first_element_type);
 }

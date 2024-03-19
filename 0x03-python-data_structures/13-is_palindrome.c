@@ -2,6 +2,56 @@
 #include <stdlib.h>
 #include "lists.h"
 
+#include <stdio.h>
+#include <stdlib.h>
+#include "lists.h"
+
+/**
+ * find_middle - Finds the middle node of a linked list.
+ * @head: Pointer to the head of the linked list.
+ * @mid_node: Pointer to store the middle node.
+ *
+ * Return: Pointer to the second half of the linked list.
+ */
+listint_t *find_middle(listint_t *head, listint_t **mid_node)
+{
+listint_t *slow = head;
+listint_t *fast = head;
+
+
+while (fast != NULL && fast->next != NULL)
+{
+fast = fast->next->next;
+slow = slow->next;
+}
+if (fast != NULL)
+{
+*mid_node = slow;
+slow = slow->next;
+}
+
+return (slow);
+}
+
+/**
+ * compare_lists - Compares two linked lists.
+ * @head1: Pointer to the head of the first linked list.
+ * @head2: Pointer to the head of the second linked list.
+ *
+ * Return: 1 if the lists are identical, 0 otherwise.
+ */
+int compare_lists(listint_t *head1, listint_t *head2)
+{
+while (head1 != NULL && head2 != NULL)
+{
+if (head1->n != head2->n)
+return (0);
+head1 = head1->next;
+head2 = head2->next;
+}
+return (1);
+}
+
 /**
  * is_palindrome - Checks if a singly linked list is a palindrome.
  * @head: Pointer to a pointer to the head of the linked list.
@@ -11,52 +61,19 @@
 int is_palindrome(listint_t **head)
 {
 if (*head == NULL || (*head)->next == NULL)
-return (1); /* Empty list or single node list is a palindrome */
+return (1);
 
-listint_t *slow = *head;
-listint_t *fast = *head;
-listint_t *prev_slow = *head;
-listint_t *second_half = NULL;
 listint_t *mid_node = NULL;
-int is_palindrome = 1; /* Assume it's a palindrome by default */
+listint_t *second_half = find_middle(*head, &mid_node);
+listint_t *prev_slow = mid_node;
+listint_t *first_half = *head;
+int result = 1;
 
-/* Find the middle of the list using slow and fast pointers */
-while (fast != NULL && fast->next != NULL)
-{
-fast = fast->next->next;
-prev_slow = slow;
-slow = slow->next;
-}
+second_half = reverse_list(second_half);
+result = compare_lists(first_half, second_half);
 
-/* Handle odd number of nodes by skipping the middle node */
-if (fast != NULL)
-{
-mid_node = slow;
-slow = slow->next;
-}
-
-/* Reverse the second half of the list */
-second_half = reverse_list(slow);
-prev_slow->next = NULL; /* Terminate the first half */
-
-/* Compare the first half with the reversed second half */
-listint_t *p1 = *head;
-listint_t *p2 = second_half;
-while (p1 != NULL && p2 != NULL)
-{
-if (p1->n != p2->n)
-{
-is_palindrome = 0;
-break;
-}
-p1 = p1->next;
-p2 = p2->next;
-}
-
-/* Restore the original list by reversing the second half again */
 second_half = reverse_list(second_half);
 
-/* Reconnect the first and second halves if they were originally connected */
 if (mid_node != NULL)
 {
 prev_slow->next = mid_node;
@@ -67,7 +84,7 @@ else
 prev_slow->next = second_half;
 }
 
-return (is_palindrome);
+return (result);
 }
 
 /**
@@ -92,3 +109,4 @@ current = next;
 
 return (prev);
 }
+

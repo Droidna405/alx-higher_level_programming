@@ -21,5 +21,8 @@ void free_listint(listint_t *head);
 
 int is_palindrome(listint_t **head);
 listint_t *reverse_list(listint_t *head);
+listint_t *find_middle(listint_t *head, listint_t **mid_node);
+int compare_lists(listint_t *head1, listint_t *head2);
+
 
 #endif /* LISTS_H */

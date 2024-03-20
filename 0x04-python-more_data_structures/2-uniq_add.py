@@ -4,4 +4,3 @@ def uniq_add(my_list=[]):
     for num in my_list:
         unique_numbers.add(num)
     return sum(unique_numbers)
-                        

@@ -9,4 +9,3 @@ if __name__ == "__main__":
         print("{} argument{}:".format(num_args, "s" if num_args > 1 else ""))
         for i in range(1, num_args + 1):
             print("{}: {}".format(i, sys.argv[i]))
-                                                

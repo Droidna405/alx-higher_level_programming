@@ -11,7 +11,7 @@ int is_palindrome(listint_t **head)
 {
 listint_t *slow = *head, *fast = *head;
 listint_t *prev_slow = NULL;
-listint_t *second_half, *mid_node;
+listint_t *second_half, *mid_node = NULL;
 int is_palindrome = 1;
 
 if (*head == NULL || (*head)->next == NULL)

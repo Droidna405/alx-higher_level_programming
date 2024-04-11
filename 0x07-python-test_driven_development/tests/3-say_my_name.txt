@@ -1,0 +1,24 @@
+"""
+Test cases for say_my_name function.
+
+>>> from 3-say_my_name import say_my_name
+
+# Test saying the full name "John Smith"
+>>> say_my_name("John", "Smith")
+My name is John Smith
+
+# Test saying the full name "Walter White"
+>>> say_my_name("Walter", "White")
+My name is Walter White
+
+# Test saying only the first name "Bob"
+>>> say_my_name("Bob")
+My name is Bob
+
+# Test passing a non-string value for first_name (should raise TypeError)
+>>> try:
+...     say_my_name(12, "White")
+... except TypeError as e:
+...     str(e)
+'first_name must be a string'
+"""

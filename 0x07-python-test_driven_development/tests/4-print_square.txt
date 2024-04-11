@@ -1,0 +1,40 @@
+"""
+Test cases for print_square function.
+
+>>> from 4-print_square import print_square
+
+# Test printing a square with size 4
+>>> print_square(4)
+####
+####
+####
+####
+
+# Test printing a square with size 10
+>>> print_square(10)
+##########
+##########
+##########
+##########
+##########
+##########
+##########
+##########
+##########
+##########
+
+# Test printing a square with size 0
+>>> print_square(0)
+<BLANKLINE>
+
+# Test printing a square with size 1
+>>> print_square(1)
+#
+
+# Test printing a square with negative size (should raise ValueError)
+>>> try:
+...     print_square(-1)
+... except ValueError as e:
+...     str(e)
+'size must be >= 0'
+"""

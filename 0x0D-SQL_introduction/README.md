@@ -1,10 +1,10 @@
-#Introduction to SQL (0x0D - ALX)
+# Introduction to SQL (0x0D - ALX)
 
-##Learning Objectives
+## Learning Objectives
 
 At the end of this project, you are expected to be able to
 explain to anyone, without the help of Google:
-###General
+### General
     What’s a database
     What’s a relational database
     What does SQL stand for
@@ -17,8 +17,8 @@ explain to anyone, without the help of Google:
     What are subqueries
     How to use MySQL functions
 
-##Requirements
-###General
+## Requirements
+### General
 
     Allowed editors: vi, vim, emacs
     All your files will be executed on Ubuntu 20.04 LTS using

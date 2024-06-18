@@ -21,7 +21,6 @@ try {
   // Write concatenated content to fileC
   fs.writeFileSync(fileC, concatenatedContent);
 
-  console.log(`Concatenation of ${fileA} and ${fileB} completed. Result written to ${fileC}`);
 } catch (err) {
   console.error(`Error: ${err.message}`);
   process.exit(1);

@@ -17,32 +17,36 @@ import sys
 
 
 def filter_states_by_name_starting_with_N(username, password, database):
-    # Connect to the MySQL database
-    db = MySQLdb.connect(
-        host="localhost",
-        port=3306,
-        user=username,
-        passwd=password,
-        db=database
-    )
+    try:
+        # Connect to the MySQL database
+        db = MySQLdb.connect(
+            host="localhost",
+            port=3306,
+            user=username,
+            passwd=password,
+            db=database
+        )
 
-    # Create a cursor object to interact with the database
-    cursor = db.cursor()
+        # Create a cursor object to interact with the database
+        cursor = db.cursor()
 
-    # Execute the query to retrieve states starting with 'N' ordered by id
-    query = "SELECT id, name FROM states WHERE name LIKE 'N%' ORDER BY id ASC"
-    cursor.execute(query)
+        # Execute the query to retrieve states starting with 'N' ordered by id
+        query = "SELECT id, name FROM states WHERE name LIKE 'N%' ORDER BY id ASC"
+        cursor.execute(query)
 
-    # Fetch all rows from the executed query
-    states = cursor.fetchall()
+        # Fetch all rows from the executed query
+        states = cursor.fetchall()
 
-    # Print results in the format (id, 'name')
-    for state in states:
-        print(state)
-
+        # Print results in the format (id, 'name')
+        for state in states:
+            print(state)
+            
+    except MySQLdb.Error as e:
+        print(f"Error connecting to MySQL: {e}")
+    finally:
         # Close the cursor and the database connection
-    cursor.close()
-    db.close()
+        cursor.close()
+        db.close()
 
 
 if __name__ == "__main__":

@@ -8,11 +8,12 @@ using the urllib package and displays the response.
 import urllib.request
 
 
-def fetch status():
+def fetch_status():
     """
     Fetches the status from a URL and prints the response details.
     """
-    with urllib.request.urlopen('https://intranet.htbn.io/status') as response:
+    url = 'https://alx-intranet.hbtn.io/status'
+    with urllib.request.urlopen(url) as response:
         data = response.read()
         print("Body response:")
         print(f"\t- type: {type(data)}")

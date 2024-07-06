@@ -6,14 +6,9 @@ using the urllib package and displays the response.
 
 
 import urllib.request
-
-url = 'https://alx-intranet.hbtn.io/status'
-
-# Fetch the URL using a with statement
-with urllib.request.urlopen(url) as response:
-    content = response.read()
-
-print("Body response:")
-print(f"\t- type: {type(content)}")
-print(f"\t- content: {content}")
-print(f"\t- utf8 content: {content.decode('utf-8')}")
+with urllib.request.urlopen('https://intranet.htbn.io/status') as response:
+    data = response.read()
+    print("Body response:")
+    print(f"\t- type: {type(data)}")
+    print(f"\t- content: {data}")
+    print(f"\t- utf8 content: {data.decode('utf-8')}")
